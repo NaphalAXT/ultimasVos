@@ -164,16 +164,8 @@ namespace Ultima
 
 		static Files()
 		{
-			m_Directory = LoadDirectory();
+            m_Directory = "./Ultima Online";
 			LoadMulPath();
-		}
-
-		/// <summary>
-		/// ReReads Registry Client dir
-		/// </summary>
-		public static void ReLoadDirectory()
-		{
-			m_Directory = LoadDirectory();
 		}
 
 		/// <summary>
@@ -261,101 +253,6 @@ namespace Ultima
 		internal static string GetFilePath(string format, params object[] args)
 		{
 			return GetFilePath(String.Format(format, args));
-		}
-
-		static readonly string[] knownRegkeys = new string[] { 
-			@"Origin Worlds Online\Ultima Online\1.0", 
-			@"Origin Worlds Online\Ultima Online Third Dawn\1.0",
-			@"EA GAMES\Ultima Online Samurai Empire", 
-			@"EA GAMES\Ultima Online Samurai Empire\1.0", 
-			@"EA GAMES\Ultima Online Samurai Empire\1.00.0000", 
-			@"EA GAMES\Ultima Online: Samurai Empire\1.0", 
-			@"EA GAMES\Ultima Online: Samurai Empire\1.00.0000", 
-			@"EA Games\Ultima Online: Mondain's Legacy", 
-			@"EA Games\Ultima Online: Mondain's Legacy\1.0", 
-			@"EA Games\Ultima Online: Mondain's Legacy\1.00.0000", 
-			@"Origin Worlds Online\Ultima Online Samurai Empire BETA\2d\1.0", 
-			@"Origin Worlds Online\Ultima Online Samurai Empire BETA\3d\1.0", 
-			@"Origin Worlds Online\Ultima Online Samurai Empire\2d\1.0", 
-			@"Origin Worlds Online\Ultima Online Samurai Empire\3d\1.0",
-			@"Origin Worlds Online\Ultima Online\KR Legacy Beta",
-			@"Electronic Arts\EA Games\Ultima Online Stygian Abyss Classic",
-			@"Electronic Arts\EA Games\Ultima Online Classic",
-		};
-
-		static readonly string[] knownRegPathkeys = new string[] { 
-			"ExePath",
-			"Install Dir",
-			"InstallDir"
-		};
-
-		private static string LoadDirectory()
-		{
-			string dir = null;
-			for (int i = knownRegkeys.Length - 1; i >= 0; i--)
-			{
-				string exePath;
-
-				if (Environment.Is64BitOperatingSystem)
-					exePath = GetPath(string.Format(@"Wow6432Node\{0}", knownRegkeys[i]));
-				else
-					exePath = GetPath(knownRegkeys[i]);
-
-				if (exePath != null)
-				{
-					dir = exePath;
-					break;
-				}
-			}
-			return dir;
-		}
-
-		private static string GetPath(string regkey)
-		{
-			try
-			{
-				RegistryKey key = Registry.LocalMachine.OpenSubKey(string.Format(@"SOFTWARE\{0}", regkey));
-
-				if (key == null)
-				{
-					key = Registry.CurrentUser.OpenSubKey(string.Format(@"SOFTWARE\{0}", regkey));
-
-					if (key == null)
-						return null;
-				}
-
-				string path = null;
-				foreach (string pathkey in knownRegPathkeys)
-				{
-					path = key.GetValue(pathkey) as string;
-
-					if ((path == null) || (path.Length <= 0))
-						continue;
-
-					if (pathkey == "InstallDir")
-						path = path + @"\";
-
-					if (!System.IO.Directory.Exists(path) && !File.Exists(path))
-						continue;
-
-					break;
-				}
-
-				if (path == null)
-					return null;
-
-				if (!System.IO.Directory.Exists(path))
-					path = Path.GetDirectoryName(path);
-
-				if ((path == null) || (!System.IO.Directory.Exists(path)))
-					return null;
-
-				return path;
-			}
-			catch
-			{
-				return null;
-			}
 		}
 
 		/// <summary>

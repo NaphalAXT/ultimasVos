@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ultima", "Ultima\Ultima.csproj", "{ABFB5833-E5F7-46F4-849E-196B4A5A03E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABFB5833-E5F7-46F4-849E-196B4A5A03E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABFB5833-E5F7-46F4-849E-196B4A5A03E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABFB5833-E5F7-46F4-849E-196B4A5A03E0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ABFB5833-E5F7-46F4-849E-196B4A5A03E0}.Debug|x64.Build.0 = Debug|Any CPU
+		{ABFB5833-E5F7-46F4-849E-196B4A5A03E0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ABFB5833-E5F7-46F4-849E-196B4A5A03E0}.Debug|x86.Build.0 = Debug|Any CPU
+		{ABFB5833-E5F7-46F4-849E-196B4A5A03E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABFB5833-E5F7-46F4-849E-196B4A5A03E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABFB5833-E5F7-46F4-849E-196B4A5A03E0}.Release|x64.ActiveCfg = Release|Any CPU
+		{ABFB5833-E5F7-46F4-849E-196B4A5A03E0}.Release|x64.Build.0 = Release|Any CPU
+		{ABFB5833-E5F7-46F4-849E-196B4A5A03E0}.Release|x86.ActiveCfg = Release|Any CPU
+		{ABFB5833-E5F7-46F4-849E-196B4A5A03E0}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9C6DF11-C82F-4493-B8A3-C74B221370B4}
+	EndGlobalSection
+EndGlobal
