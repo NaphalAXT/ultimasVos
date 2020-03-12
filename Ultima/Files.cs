@@ -312,7 +312,8 @@ namespace Ultima
 
 		private static string GetPath(string regkey)
 		{
-			try
+#if NETFULL
+            try
 			{
 				RegistryKey key = Registry.LocalMachine.OpenSubKey(string.Format(@"SOFTWARE\{0}", regkey));
 
@@ -356,6 +357,9 @@ namespace Ultima
 			{
 				return null;
 			}
+#endif
+
+            return null; 
 		}
 
 		/// <summary>
